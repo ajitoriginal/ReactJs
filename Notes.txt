@@ -1,0 +1,6 @@
+Components are like functions that return HTML elements.
+
+Arguments can be passed into the component as as props, which stands for properties.
+
+You send the arguments into the components as HTML attributes.
+
