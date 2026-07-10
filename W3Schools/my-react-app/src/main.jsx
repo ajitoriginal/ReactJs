@@ -1,16 +1,18 @@
 import {createRoot} from 'react-dom/client'
 
-function Football() {
-  const shoot = (a, e) => {
-    alert(a)
-    alert(e.type)
-    
-  }
+function MissedGoal() {
+  return <h1>MISSED!</h1>
+}
+
+function MadeGoal() {
+  return <h1>Goal!</h1>
+}
+function Goal({isGoal}) {
   return (
-    <button onClick={(event) => shoot('Goal', event)}>Take the shot!</button>
+    <>{isGoal ? <MadeGoal/> : <MissedGoal />}</>
   )
 }
 
 createRoot(document.getElementById('root')).render(
-  <Football />
+  <Goal isGoal={true}/>
 )
