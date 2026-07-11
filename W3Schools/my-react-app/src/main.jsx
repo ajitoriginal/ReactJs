@@ -4,8 +4,12 @@ import {createRoot} from 'react-dom/client'
 function MyForm() {
   const [name, setName] = useState("")
   const handleChange = (e) => setName(e.target.value)
+  const handleSubmit = (e) => {
+    e.preventDefault(e)
+    alert(name)
+  }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label>
         Enter Your Name:
         <input
@@ -15,6 +19,7 @@ function MyForm() {
         />
       </label>
       <p>Current Value : {name}</p>
+      <input type="submit"/>
     </form>
   )
 }
