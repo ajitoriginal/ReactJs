@@ -1,18 +1,17 @@
 import {createRoot} from 'react-dom/client'
 
-function MissedGoal() {
-  return <h1>MISSED!</h1>
-}
-
-function MadeGoal() {
-  return <h1>Goal!</h1>
-}
-function Goal({isGoal}) {
+function MyCars() {
+  const cars = ['Ford', 'BMW', 'Audi'];
   return (
-    <>{isGoal ? <MadeGoal/> : <MissedGoal />}</>
-  )
+    <>
+      <h1>My Cars:</h1>
+      <ul>
+        {cars.map((car, index) => <li key={index}>I am a { car }</li>)}
+      </ul>
+    </>
+  );
 }
 
 createRoot(document.getElementById('root')).render(
-  <Goal isGoal={true}/>
-)
+  <MyCars />
+);
