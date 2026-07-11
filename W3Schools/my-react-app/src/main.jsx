@@ -2,23 +2,23 @@ import {useState} from 'react'
 import {createRoot} from 'react-dom/client'
 
 function MyForm() {
-  const [name, setName] = useState("")
-  const handleChange = (e) => setName(e.target.value)
+  const [myTxt, setMyTxt] = useState("")
+  const handleChange = (e) => setMyTxt(e.target.value)
   const handleSubmit = (e) => {
     e.preventDefault(e)
-    alert(name)
+    alert(myTxt)
   }
   return (
     <form onSubmit={handleSubmit}>
+    {/* <form> */}
       <label>
-        Enter Your Name:
-        <input
-          type="text"
-          value={name}
+        Write here:
+        <textarea
+          value={myTxt}
           onChange={(e) => handleChange(e)}
         />
       </label>
-      <p>Current Value : {name}</p>
+      <p>Current Value : {myTxt}</p>
       <input type="submit"/>
     </form>
   )
