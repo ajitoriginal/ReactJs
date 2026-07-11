@@ -2,25 +2,46 @@ import {useState} from 'react'
 import {createRoot} from 'react-dom/client'
 
 function MyForm() {
-  const [myCar, setMyCar] = useState("Volvo")
-  const handleChange = (e) => setMyCar(e.target.value)
-  // const handleSubmit = (e) => {
-  //   e.preventDefault(e)
-  //   alert(myTxt)
-  // }
+  const [inputs, setInputs] = useState({
+    firstName: "Tony",
+    lastName: "Stark"
+  })
+  const handleChange = (e) => {
+    const {name, value} = e.target
+    setInputs({...inputs, [name]: value})
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    alert(`Current Values: First Name: ${inputs.firstName}, Last Name: ${inputs.lastName}`)
+  }
+
   return (
-    // <form onSubmit={handleSubmit}>
-    <form>
+    <form onSubmit={handleSubmit}>
       <label>
-        Chhose here:
-        <select value={myCar} onChange={handleChange}>
-          <option value="Ford">Ford</option>
-          <option value="Volvo">Volvo</option>
-          <option value="Flat">Flat</option>
-        </select>
+        First Name:
+        <input
+          type="text"
+          name="firstName"
+          value={inputs.firstName}
+          onChange={handleChange}
+        />
       </label>
-      <p>Current Value : {myCar}</p>
-        {/* <input type="submit"/> */}
+      <br />
+      <br />
+      <label>
+        Last Name:
+        <input
+          type="text"
+          name="lastName"
+          value={inputs.lastName}
+          onChange={handleChange}
+        />
+      </label>
+      <p>
+        Current Values: First Name: {inputs.firstName}, Last Name: {inputs.lastName}
+      </p>
+      <button type="submit">Submit</button>
     </form>
   )
 }
